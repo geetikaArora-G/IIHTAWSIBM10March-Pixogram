@@ -1,0 +1,20 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <ul class="navbar-nav">
+    <li>
+      <a
+        [routerLink]="['/singleMedia']"
+        [queryParams]="{userId: userId}"
+        class="nav-link"
+        >Single Media</a
+      >
+    </li>
+    <li>
+      <a
+        [routerLink]="['/multipleMedia']"
+        [queryParams]="{userId: userId}"
+        class="nav-link"
+        >Multiple Media</a
+      >
+    </li>
+  </ul>
+</nav>

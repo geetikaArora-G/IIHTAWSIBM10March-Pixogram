@@ -1,0 +1,18 @@
+----------------------------------------------------------------
+Thu Jul 08 16:52:47 IST 2021:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-017a-85db-1e77-000000723698 
+on database directory memory:C:\RestAPIEori\UserManagement\testdb with class loader sun.misc.Launcher$AppClassLoader@5c8b7fbe 
+Loaded from file:/C:/Users/Geetika/.m2/repository/org/apache/derby/derby/10.12.1.1/derby-10.12.1.1.jar
+java.vendor=IBM Corporation
+java.runtime.version=pwa6480sr3fp10-20160720_02 (SR3 FP10)
+java.fullversion=JRE 1.8.0 IBM J9 2.8 Windows 10 amd64-64 Compressed References 20160719_312156 (JIT enabled, AOT enabled)
+J9VM - R28_Java8_SR3_20160719_1144_B312156
+JIT  - tr.r14.java_20160629_120284.01
+GC   - R28_Java8_SR3_20160719_1144_B312156_CMPRSS
+J9CL - 20160719_312156
+user.dir=C:\RestAPIEori\UserManagement
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

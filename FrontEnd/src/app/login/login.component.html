@@ -1,0 +1,62 @@
+<app-main></app-main>
+<div *ngIf='userNotFound' class="alert alert-danger">
+  <p>
+    UserName/Password Invalid.
+  </p>
+</div>
+<div class="container">
+  <h1>User Login</h1>
+  <form #login="ngForm" (ngSubmit)="loginUser(login)">
+
+    <div class="form-group">
+      <label for="userName">User Name :</label>
+      <input
+      #userName="ngModel"
+      required
+      minlength="8"
+      maxlength="12"
+      type="text"
+      name="userName"
+      class="form-control"
+      pattern="^[a-zA-Z][a-zA-Z0-9]*$"
+      ngModel
+    />
+      <div *ngIf="userName.invalid && (userName.dirty || userName.touched)" class="alert alert-danger">
+        <div *ngIf="userName.errors?.required">
+          User Name is required.
+        </div>
+        <div *ngIf="userName.errors?.minlength">
+          User Name must be at least 8 characters long.
+        </div>
+        <div *ngIf="userName.errors?.pattern">
+          User Name should contain only Alphabets and Numbers .It should not
+          start with Numbers.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password :</label>
+      <input
+      #password="ngModel"
+      required
+      minlength="8"
+      maxlength="12"
+      type="password"
+      name="password"
+      class="form-control"
+      ngModel
+    />
+      <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+        <div *ngIf="password.errors?.required">
+          Password is required.
+        </div>
+        <div *ngIf="password.errors?.minlength">
+          Password must be at least 8 characters long.
+        </div>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Submit</button>
+  </form>
+</div>

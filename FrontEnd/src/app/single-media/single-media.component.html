@@ -1,0 +1,87 @@
+<app-upload-media></app-upload-media>
+<div *ngIf="mediaUploaded" class="alert alert-success">
+  <p>
+    Media Successfully Uploaded.
+  </p>
+</div>
+<div class="container">
+  <h1>New Media Page</h1>
+  <form #mediaForm="ngForm" (ngSubmit)="uploadMedia(mediaForm)">
+    <div class="form-group">
+      <label for="title">Title :</label>
+      <input
+        #title="ngModel"
+        required
+        type="text"
+        name="title"
+        class="form-control"
+        maxlength="80"
+        ngModel
+      />
+      <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
+        <div *ngIf="title.errors?.required">
+          Title is required.
+        </div>
+        <div *ngIf="title.errors?.maxlength">
+          Title should contain only 80 Characters.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description :</label>
+      <input
+        #description="ngModel"
+        required
+        type="text"
+        name="description"
+        class="form-control"
+        maxlength="144"
+        ngModel
+      />
+      <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert alert-danger">
+        <div *ngIf="description.errors?.required">
+          Description is required.
+        </div>
+        <div *ngIf="description.errors?.pattern">
+          Description should contain only 144 Characters.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="tags">Tags:</label>
+      <input
+        #tags="ngModel"
+        required
+        type="text"
+        name="tags"
+        class="form-control"
+        ngModel
+      />
+      <div *ngIf="tags.invalid && (tags.dirty || tags.touched)" class="alert alert-danger">
+        <div *ngIf="tags.errors?.required">
+          Tags are required.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="media">Upload Media:</label>
+      <input
+        #media="ngModel"
+        required
+        type="file"
+        name="media"
+        class="form-control"
+        (change)="onFileSelect($event)"
+        ngModel
+      />
+      <div *ngIf="media.invalid && (media.dirty || media.touched)" class="alert alert-danger">
+        <div *ngIf="media.errors?.required">
+          Media for Uploading is required.
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-primary" name="submit" type="submit">Submit</button>
+  </form>
+</div>

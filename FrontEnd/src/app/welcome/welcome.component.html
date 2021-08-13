@@ -1,0 +1,53 @@
+<div *ngIf="isRegistered">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <ul class="navbar-nav">
+      <li><a routerLink="/login" class="nav-link">Login</a></li>
+    </ul>
+  </nav>
+  <p>
+    User {{userName}} Successfully Registered. Kinldy Login to Continue..
+  </p>
+</div>
+<div *ngIf="isLoggedIn">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <ul class="navbar-nav">
+      <li>
+        <a
+          [routerLink]="['/myMedia']"
+          [queryParams]="{userId: userId}"
+          class="nav-link"
+          >My Media</a
+        >
+      </li>
+      <li>
+        <a
+          [routerLink]="['/uploadMedia']"
+          [queryParams]="{userId: userId}"
+          class="nav-link"
+          >Upload Media</a
+        >
+      </li>
+      <li>
+        <a
+          [routerLink]="['/update']"
+          [queryParams]="{userId: userId}"
+          class="nav-link"
+          >Account Update</a
+        >
+      </li>
+    </ul>
+  </nav>
+  <p>
+    welcome {{userName}}
+  </p>
+</div>
+<div *ngIf="isUpdated">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <ul class="navbar-nav">
+      <li><a routerLink="/login" class="nav-link">Login</a></li>
+    </ul>
+  </nav>
+  <p>
+    Successfully Updated. Kinldy Login to Continue..
+  </p>
+</div>
