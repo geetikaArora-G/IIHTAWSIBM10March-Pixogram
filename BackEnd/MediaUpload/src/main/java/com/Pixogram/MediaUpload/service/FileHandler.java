@@ -18,12 +18,5 @@ public final class FileHandler {
 		return path.toString();
 
 	}
-	public static MultipartFile readFile(String location) throws IOException {
-		String folder = "/photos/";
-		byte[] bytes = file.getBytes();
-		Path path = Paths.get(folder + userName + "." + file.getOriginalFilename().split("\\.")[1]);
-		Files.write(path, bytes);
-		return path.toString();
-
-	}
+	
 }
