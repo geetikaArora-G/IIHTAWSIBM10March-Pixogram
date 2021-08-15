@@ -1,8 +1,12 @@
 package com.Pixogram.MediaUpload.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -36,11 +40,12 @@ public class MediaUploadController {
 	 * Method to get Media Details on the basis of UserId
 	 * 
 	 * @throws NoMediaFoundException
+	 * @throws IOException 
 	 * 
 	 */
 	@RequestMapping("/Media/GetMedia/{userId}")
-	public List<MediaDetailsDTO> getMediaDetailsByUserId(@PathVariable String userId)
-			throws NoMediaFoundException {
+	public List<String> getMediaDetailsByUserId(@PathVariable String userId)
+			throws NoMediaFoundException, IOException {
 		logger.debug("Method -> getMediaDetailsByUserId || UserId : " + userId);
 		List<MediaDetailsDTO> mediaDetailsDTO = new ArrayList<MediaDetailsDTO>();
 		List<MediaDetails> mediaDetails = service.getMediaDetailsByUserId(Long.valueOf(userId));
@@ -48,7 +53,17 @@ public class MediaUploadController {
 			MediaDetailsDTO MediaDetailsDTOTemp = MediaDetailsConvertor.convertMediaDetailsToMediaDetailsDTO(mediaDetailsTemp);
 			mediaDetailsDTO.add(MediaDetailsDTOTemp);
 		}
-		return mediaDetailsDTO;
+		List<String> list = new ArrayList<>();
+		for(MediaDetailsDTO mediaDetailsDTO1 :mediaDetailsDTO){
+			File file = new File(mediaDetailsDTO1.getMediaUrl());
+			FileInputStream f= new FileInputStream(file);
+			byte[] bytes=new byte[(int)file.length()];
+			f.read(bytes);
+			String encodeBase64 = Base64.getEncoder().encodeToString(bytes);
+			list.add("date:image/"+"jpg"+";base64,"+encodeBase64);
+			
+		}
+		return list;
 	}
 
 	
